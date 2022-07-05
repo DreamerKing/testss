@@ -1,0 +1,235 @@
+// 字体
+html, body {
+  overflow: hidden;
+  font-family: Helvetica Neue, Microsoft YaHei, Source Han Sans CN, PingFang SC, '苹方简体', Microsoft YaHei, '微软雅黑', '文泉驿微米黑', '华文黑体', Source Han Sans CN, '思源黑体';
+}
+
+// 字号
+h1, h2, h3, h4 {
+  letter-spacing: 0;
+}
+
+h1 {
+  font-size: 18px;
+}
+
+h2 {
+  font-size: 16px;
+}
+
+h3 {
+  font-size: 14px;
+}
+
+h4 {
+  font-size: 12px;
+}
+
+a:hover {
+  color: #285CD5;
+}
+
+// 按钮
+.ant-btn-link:focus, .ant-btn-link:hover {
+  color: #285CD5;
+}
+
+.ant-btn-disabled, .ant-btn-disabled.active, .ant-btn-disabled:active, .ant-btn-disabled:focus, .ant-btn-disabled:hover, .ant-btn.disabled, .ant-btn.disabled.active, .ant-btn.disabled:active, .ant-btn.disabled:focus, .ant-btn.disabled:hover, .ant-btn[disabled], .ant-btn[disabled].active, .ant-btn[disabled]:active, .ant-btn[disabled]:focus, .ant-btn[disabled]:hover {
+  color: #C4C9CF;
+}
+
+.ant-btn-primary-disabled, .ant-btn-primary-disabled.active, .ant-btn-primary-disabled:active, .ant-btn-primary-disabled:focus, .ant-btn-primary-disabled:hover, .ant-btn-primary.disabled, .ant-btn-primary.disabled.active, .ant-btn-primary.disabled:active, .ant-btn-primary.disabled:focus, .ant-btn-primary.disabled:hover, .ant-btn-primary[disabled], .ant-btn-primary[disabled].active, .ant-btn-primary[disabled]:active, .ant-btn-primary[disabled]:focus, .ant-btn-primary[disabled]:hover {
+  color: #fff;
+  background: #A7B8E0;
+  border-color: #A7B8E0;
+}
+
+.ant-btn-link-disabled, .ant-btn-link-disabled.active, .ant-btn-link-disabled:active, .ant-btn-link-disabled:focus, .ant-btn-link-disabled:hover, .ant-btn-link.disabled, .ant-btn-link.disabled.active, .ant-btn-link.disabled:active, .ant-btn-link.disabled:focus, .ant-btn-link.disabled:hover, .ant-btn-link[disabled], .ant-btn-link[disabled].active, .ant-btn-link[disabled]:active, .ant-btn-link[disabled]:focus, .ant-btn-link[disabled]:hover {
+  color: #A7B8E0;
+}
+
+.ant-btn {
+  padding: 0 16px;
+  letter-spacing: -1px;
+}
+
+.ant-btn-sm {
+  height: 22px;
+  padding: 0 12px;
+}
+
+.reset-tab-card-style {
+  .ant-card-body {
+    padding: 0 16px 16px 16px;
+  }
+
+  .ant-tabs-bar {
+    border-bottom: 0px;
+  }
+}
+
+// 标签页
+// .ant-tabs-bar {
+// border: none;
+// }
+
+// .ant-tabs-tab {
+// color: #767D8A
+// }
+
+// .ant-tabs-nav .ant-tabs-tab-disabled, .ant-tabs-nav .ant-tabs-tab-disabled:hover {
+// color: #C4C9CF
+// }
+
+// .ant-tabs-nav .ant-tabs-tab:hover {
+// font-family: PingFangSC-Regular;
+// color: #1A47B0;
+// }
+
+// 表格
+table {
+  table-layout: fixed;
+
+  td {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.ant-table {
+  .ant-table-thead th {
+    border: none;
+  }
+
+  .ant-table-row td {
+    border: none;
+  }
+
+  .ant-table-row:nth-child(2n) td {
+    background: #F5F7FA;
+  }
+
+  .ant-table-tbody > tr > td, .ant-table-thead > tr > th {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .ant-table-tbody > tr > td, .ant-table-thead > tr > th {
+    height: 46px;
+  }
+
+  .ant-table-tbody > tr > td:nth-child(1), .ant-table-thead > tr > th:nth-child(1) {
+  }
+}
+
+// 输入框
+.ant-input {
+  border-color: #C8CED9;
+}
+
+.ant-input:focus, .ant-input:hover {
+  border: 1px solid #1A47B0;
+}
+
+.ant-input-affix-wrapper .ant-input-prefix, .ant-input-affix-wrapper .ant-input-suffix {
+  color: #9BA2AB;
+}
+
+.ant-input[disabled], .ant-input[disabled]:hover {
+  border: 1px solid #DDE1E8;
+  color: #9BA2AB;
+}
+
+// 开关
+.ant-switch {
+  min-width: 40px;
+  height: 20px;
+}
+
+.ant-switch-loading-icon, .ant-switch:after {
+  width: 16px;
+  height: 16px;
+}
+
+.ant-switch-small {
+  min-width: 32px;
+  height: 16px;
+}
+
+.ant-switch-small:after {
+  width: 12px;
+  height: 12px;
+}
+
+// tips提示
+.ant-popover-inner-content {
+  max-width: 410px;
+  padding: 11px 10px;
+  max-height: 200px;
+  overflow: auto;
+}
+
+// 分页
+.ant-pagination, .ant-pagination-item a, .ant-pagination .ant-select {
+  color: #767D8A;
+}
+
+// 滚动条
+::-webkit-scrollbar {
+  /* 滚动条整体样式 */
+  width: 8px; /* 高宽分别对应横竖滚动条的尺寸 */
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  /* 滚动条里面小方块 */
+  border-radius: 4px;
+  background-color: #D6D7DB;
+}
+
+// 空页面
+.ant-empty-description {
+  color: #9BA2AB;
+}
+
+// select
+// 下拉select箭头变颜色
+.ant-select-open {
+  .ant-select-arrow {
+    color: #1A47B0;
+  }
+}
+
+// 已选中的item选中状态的颜色
+.ant-select-dropdown-menu-item-selected:not(.ant-select-dropdown-menu-item-active) {
+  color: #1890ff;
+  font-weight: 400;
+}
+
+// primary-btn
+// .ant-btn:focus {
+//   color: #C8CED9;
+//   border-color: #C8CED9;
+// }
+
+.ant-btn-primary:hover {
+  background-color: #285CD5;
+  border-color: #285CD5;
+}
+
+.ant-btn-primary:focus {
+  color: #fff;
+  background-color: #1A47B0;
+  border-color: #1A47B0;
+}
+
+#root {
+  input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+  }
+
+  input:-webkit-autofill {
+    -webkit-text-fill-color: #4B5265 !important;
+  }
+}

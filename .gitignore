@@ -1,0 +1,10 @@
+.idea
+*.iml
+npm-debug.log
+node_modules
+.DS_Store
+dist
+package-lock.json
+lib
+/.vscode
+.eslintcache

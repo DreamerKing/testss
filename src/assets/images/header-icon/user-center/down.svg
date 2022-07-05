@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>下拉</title>
+    <desc>Created with Sketch.</desc>
+    <g id="组件&amp;布局" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.7">
+        <g id="顶部导航栏说明" transform="translate(-847.000000, -544.000000)" fill-rule="nonzero">
+            <g id="编组-9备份-2" transform="translate(344.000000, 522.000000)">
+                <g id="编组-2" transform="translate(457.000000, 17.000000)">
+                    <g id="下拉" transform="translate(46.000000, 5.000000)">
+                        <rect id="矩形" fill="#000000" opacity="0" x="0" y="0" width="12" height="12"></rect>
+                        <path d="M0.96975,3.96975 C1.2369514,3.70257369 1.66118605,3.67589833 1.95975,3.9075 L2.03025,3.96975 L6,7.93875 L9.96975,3.96975 C10.2369514,3.70257369 10.661186,3.67589833 10.95975,3.9075 L11.03025,3.96975 C11.2974263,4.2369514 11.3241017,4.66118605 11.0925,4.95975 L11.03025,5.03025 L6.53025,9.53025 C6.2630486,9.79742631 5.83881395,9.82410167 5.54025,9.5925 L5.46975,9.53025 L0.96975,5.03025 C0.676963546,4.73737511 0.676963546,4.26262489 0.96975,3.96975 Z" id="路径" fill="#FFFFFF"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
