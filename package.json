@@ -20,15 +20,6 @@
     "@types/websocket": "^1.0.5"
   },
   "dependencies": {
-    "@cspire/cbd-router": "^1.0.13",
-    "@cspire/cbd-uikit": "^1.0.54",
-    "@cspire/zs-category": "1.0.10",
-    "@cspire/zs-category-filter": "^1.0.1",
-    "@cspire/zs-customer-sidebar": "1.1.82",
-    "@cspire/zs-customer-top-nav": "1.1.90",
-    "@cspire/zs-detail-layout": "^1.0.20",
-    "@cspire/zs-pdf": "^1.0.6",
-    "@cspire/zs-ui-tools": "1.0.18",
     "@loadable/component": "^5.13.1",
     "@reduxjs/toolkit": "^1.8.1",
     "antd": "^4.21.2",
