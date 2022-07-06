@@ -21,6 +21,7 @@
     "@types/websocket": "^1.0.5"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@loadable/component": "^5.13.1",
     "@reduxjs/toolkit": "^1.8.1",
     "antd": "^4.21.2",
