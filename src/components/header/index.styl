@@ -1,0 +1,35 @@
+@import "../../env/config.styl"
+{$header-prefix}{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: #131a3e;
+  display: flex;
+  justify-content: space-between;
+  z-index: 2;
+  box-shadow: 0 1px 3px 0 rgba(25,28,46,0.37);
+  &-left{
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 16px 18px;  
+    img{
+      max-width: 24px;
+      max-height: 24px;      
+    }
+    h2{
+      color: rgba(255,255,255,0.8);
+      font-size: 16px;
+      font-weight: 400;
+      padding-left: 6px;
+      margin: 0;
+    }  
+  }
+  &-right{
+    display: flex;
+    justify-content: right;
+  }
+}
