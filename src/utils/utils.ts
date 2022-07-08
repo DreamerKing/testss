@@ -9,3 +9,13 @@ export const getQueryName = (name:string) => {
   }
   return decodeURIComponent(result[1]);
 }
+
+export const getRouteList = (items, list = []) => {
+  items.map(item => {
+    if (item.path && item.component) {
+      list.push({ ...item })
+    }
+    item.children && getRouteList(item.children, list)
+  })
+  return list
+}

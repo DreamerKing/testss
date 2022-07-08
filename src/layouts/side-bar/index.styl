@@ -1,0 +1,74 @@
+@import "../../env/config.styl"
+{$sideBar-prefix}{
+  width: 260px;
+  background: #fff;
+  transition: width 0.39s ease;
+  box-shadow: 0 0 4px 0 #ccc;
+  z-index: 1;
+  height: 100vh;
+  position: relative;
+  flex-shrink: 0;
+  &.close{
+    width:0;
+    transition: width 0.5s;
+    .icon-side{
+      img{
+        transform: rotate(180deg); 
+      }
+      right -14px
+    }
+  }
+  .sidebar-content-wrap{
+    width: 100%;
+    overflow hidden
+    height: 100%;
+    margin-left: 0
+    transition: margin 0.39s ease;
+    &.hidden{
+      margin-left: -260px;
+    }
+  }
+  .sidebar-content{
+    overflow hidden
+    width: 260px
+  }
+  .icon-side{
+    position: absolute
+    right: 0;
+    top:50%;
+    margin-top: -20px;
+    cursor pointer;
+  }
+  .cell{
+    height: 40px;  
+    display: flex;
+    align-items: center;
+    padding-left: 46px;
+    box-sizing: border-box;
+    position relative
+  }
+  .sidebar-ul{
+    font-family: PingFangSC-Medium;
+    font-size: 16px;
+    color: #1A2E42;
+    line-height: 24px;
+    padding-left: 44px;
+    .icon{
+      position: absolute;
+      left: 20px;
+    }
+    &-li{
+      font-family: PingFangSC-Regular;
+      font-size: 14px;
+      color: #1A2E42;
+      line-height: 22px;  
+      cursor: pointer;
+      &.cur{
+        color: #1A47B0;
+        background: #EBF0FF;
+        border-right:6px solid #1A47B0; 
+        transition: border-right ease 0.2s;
+      }  
+    }
+  }
+}
