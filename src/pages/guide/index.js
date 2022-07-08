@@ -1,16 +1,23 @@
-import React, { Component, Fragment } from 'react';
-import { loginApi } from '@/services/user'
-import './index.scss'
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { userLoginAction } from '@/actions/user'
+import './index.scss';
 class Guide extends Component {
+
   render() {
     return (
-      <div className="index" onClick={() => {
-        loginApi().then(() => {
-          alert(11123)
-        })
-      }}>点击</div>
+      <div className="index" onClick={this.props.hanldleLogin}>点击</div>
     )
   }
 }
 
-export default Guide
+const mapDispatchToProps = (dispatch) => {
+  return {
+    hanldleLogin: () => {
+      dispatch(userLoginAction);
+    }
+  }
+}
+
+
+export default connect(null, mapDispatchToProps)(Guide);
