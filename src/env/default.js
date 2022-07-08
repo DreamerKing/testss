@@ -1,0 +1,1 @@
+export const headTitle = "中枢系统运营平台"

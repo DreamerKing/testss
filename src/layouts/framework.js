@@ -9,6 +9,7 @@ import Header from '@/components/header'
 import Footer from '@/components/footer'
 import SideBar from '@/components/side-bar';
 import Crumbs from '@/components/crumbs';
+import { headTitle } from '@/env/default';
 
 // 表格空状态的提示
 
@@ -27,7 +28,7 @@ class Framework extends Component {
         renderEmpty={customizeRenderEmpty}
       >
         <div className="framework">
-          <Header />
+          <Header title={headTitle} />
           <div className='framework-section'>
             <SideBar />
             <div className='framework-section-right'>
