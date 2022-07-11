@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom'
+import _ from 'lodash'
 // 国际化
 import { ConfigProvider } from 'antd';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
@@ -63,7 +64,7 @@ const Framework = (props) => {
         <div className='framework-section'>
           <SideBar
             curKey={curKey}
-            menuList={getMenuList(PageRoutes)}
+            menuList={getMenuList(_.cloneDeep(PageRoutes))}
             menuClickCallback={(key, path) => {
               navigate(path)
             }}
