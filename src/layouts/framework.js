@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation, Outlet } from 'react-router-dom'
 import _ from 'lodash'
 // 国际化
 import { ConfigProvider } from 'antd';
@@ -71,7 +71,9 @@ const Framework = (props) => {
           />
           <div className='framework-section-right'>
             <Crumbs />
-            <div className='framework-section-content'>{props.children}</div>
+            <div className='framework-section-content'>
+              <Outlet />
+            </div>
             <Footer />
           </div>
         </div>
