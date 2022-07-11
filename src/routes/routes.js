@@ -1,6 +1,7 @@
 import loadable from '@loadable/component'
 import { FundOutlined } from '@ant-design/icons';
 const Guide = loadable(() => import('../pages/guide'));
+const UserManage = loadable(() => import('../pages/user-manage'));
 
 const PageRoutes = [
   {
@@ -9,6 +10,13 @@ const PageRoutes = [
     key: 'user',
     isMenu: true,//是否菜单栏显示
     children: [
+      {
+        name: "用户管理",
+        key: 'user-manage',
+        path: '/user-manage',
+        component: <UserManage />,
+        isMenu: true,
+      },
       {
         name: '运营人员',
         key: 'operation-user-list',
