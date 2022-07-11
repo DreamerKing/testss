@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom'
 // 国际化
 import { ConfigProvider } from 'antd';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
@@ -11,6 +12,8 @@ import SideBar from './side-bar';
 import Crumbs from './crumbs';
 import { headTitle } from '@/env/default';
 import PageRoutes from '@/routes/routes'
+import { getRouteList } from '@/utils/utils'
+
 
 // 表格空状态的提示
 
@@ -30,33 +33,36 @@ const getMenuList = (list = []) => {
   return _list
 }
 
-class Framework extends Component {
-  render() {
-    return (
-      <ConfigProvider
-        locale={zhCN}
-        renderEmpty={customizeRenderEmpty}
-      >
-        <div className="framework">
-          <Header title={headTitle} />
-          <div className='framework-section'>
-            <SideBar
-              curKey="a3"
-              menuList={getMenuList(PageRoutes)}
-              menuClickCallback={() => {
-
-              }}
-            />
-            <div className='framework-section-right'>
-              <Crumbs />
-              <div className='framework-section-content'>{this.props.children}</div>
-              <Footer />
-            </div>
+const Framework = (props) => {
+  const navigate = useNavigate()
+  const location = useLocation()
+  const routeList = getRouteList(PageRoutes)
+  const curRoute = routeList.filter(item => item.path === location.pathname)
+  const [curKey, setCurKey] = useState(curRoute[0]?.key || '')
+  return (
+    <ConfigProvider
+      locale={zhCN}
+      renderEmpty={customizeRenderEmpty}
+    >
+      <div className="framework">
+        <Header title={headTitle} />
+        <div className='framework-section'>
+          <SideBar
+            curKey={curKey}
+            menuList={getMenuList(PageRoutes)}
+            menuClickCallback={(key, path) => {
+              navigate(path)
+            }}
+          />
+          <div className='framework-section-right'>
+            <Crumbs />
+            <div className='framework-section-content'>{props.children}</div>
+            <Footer />
           </div>
         </div>
-      </ConfigProvider>
-    )
-  }
+      </div>
+    </ConfigProvider>
+  )
 }
 
 export default Framework

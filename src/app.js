@@ -15,16 +15,16 @@ export default class App extends Component {
   render() {
     return (
       <Auth>
-        <Framework>
-          <Router>
+        <Router>
+          <Framework>
             <Routes>
               {getRouteList(PageRoutes).map((item, index) => (
                 <Route key={index} path={item.path} element={item.component} />
               ))}
               <Route path="*" element={<div className="FBV FBAC FBJC" style={{ fontSize: 100 }}>404</div>} />
             </Routes>
-          </Router>
-        </Framework>
+          </Framework>
+        </Router>
       </Auth>
     )
   }

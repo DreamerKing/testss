@@ -9,12 +9,13 @@ interface menuProps {
   name: string,
   key: string,
   icon: string,
+  path?: string,
   children: menuProps[],
 }
 interface DipSidebarInfo {
   menuList: menuProps[],
   curKey: string,
-  menuClickCallback: (T: string) => void,
+  menuClickCallback: (T: string, F: string) => void,
 }
 type DipSidebarProps = Partial<DipSidebarInfo>
 
@@ -40,7 +41,7 @@ const SideBar = React.forwardRef((props: DipSidebarProps, ref) => {
                     key={ind}
                     onClick={() => {
                       setMenuKey(it.key)
-                      menuClickCallback && menuClickCallback(item.key)
+                      menuClickCallback && menuClickCallback(it.key, it.path)
                     }}
                   >{it.name}</div>
                 ))
