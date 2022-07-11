@@ -1021,17 +1021,17 @@
     "@babel/helper-validator-option" "^7.16.7"
     "@babel/plugin-transform-typescript" "^7.17.12"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.10.1", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.4", "@babel/runtime@^7.11.1", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.15.4", "@babel/runtime@^7.18.0", "@babel/runtime@^7.18.3", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.6", "@babel/runtime@^7.7.7", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.10.1", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.4", "@babel/runtime@^7.11.1", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.18.0", "@babel/runtime@^7.18.3", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.6", "@babel/runtime@^7.7.7", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
   version "7.18.3"
   resolved "https://registry.cnpm.cspiretech.com/@babel/runtime/download/@babel/runtime-7.18.3.tgz#c7b654b57f6f63cf7f8b418ac9ca04408c4579f4"
   integrity sha1-x7ZUtX9vY89/i0GKycoEQIxFefQ=
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.16.7", "@babel/runtime@^7.2.0":
+"@babel/runtime@^7.12.1", "@babel/runtime@^7.16.7", "@babel/runtime@^7.2.0":
   version "7.18.6"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.18.6.tgz#6a1ef59f838debd670421f8c7f2cbb8da9751580"
-  integrity sha512-t9wi7/AW6XtKahAe20Yw0/mMljKq0B1r2fPdvaAdV/KPDZewFXdaaa6K7lxmZBZ8FBNpCiAT6iHPmd6QO9bKfQ==
+  resolved "https://registry.cnpm.cspiretech.com/@babel/runtime/download/@babel/runtime-7.18.6.tgz#6a1ef59f838debd670421f8c7f2cbb8da9751580"
+  integrity sha1-ah71n4ON69ZwQh+Mfyy7jal1FYA=
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -1294,6 +1294,25 @@
   version "2.11.5"
   resolved "https://registry.cnpm.cspiretech.com/@popperjs/core/download/@popperjs/core-2.11.5.tgz#db5a11bf66bdab39569719555b0f76e138d7bd64"
   integrity sha1-21oRv2a9qzlWlxlVWw924TjXvWQ=
+
+"@redux-devtools/core@^3.13.1":
+  version "3.13.1"
+  resolved "https://registry.cnpm.cspiretech.com/@redux-devtools/core/download/@redux-devtools/core-3.13.1.tgz#2abd94c99be1c7d3941c428667f722aa9d56012f"
+  integrity sha1-Kr2UyZvhx9OUHEKGZ/ciqp1WAS8=
+  dependencies:
+    "@babel/runtime" "^7.18.3"
+    "@redux-devtools/instrument" "^2.1.0"
+    "@types/prop-types" "^15.7.5"
+    lodash "^4.17.21"
+    prop-types "^15.8.1"
+
+"@redux-devtools/instrument@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.cnpm.cspiretech.com/@redux-devtools/instrument/download/@redux-devtools/instrument-2.1.0.tgz#78c9553225b0eb655128abff8efa8d41384c0a0c"
+  integrity sha1-eMlVMiWw62VRKKv/jvqNQThMCgw=
+  dependencies:
+    "@babel/runtime" "^7.16.7"
+    lodash "^4.17.21"
 
 "@redux-saga/core@^1.1.3":
   version "1.1.3"
@@ -1606,16 +1625,6 @@
   integrity sha1-MwstRywi95blUxRGk56s74N4REo=
   dependencies:
     "@types/react" "*"
-
-"@types/react-redux@^7.1.20":
-  version "7.1.24"
-  resolved "https://registry.cnpm.cspiretech.com/@types/react-redux/download/@types/react-redux-7.1.24.tgz#6caaff1603aba17b27d20f8ad073e4c077e975c0"
-  integrity sha1-bKr/FgOroXsn0g+K0HPkwHfpdcA=
-  dependencies:
-    "@types/hoist-non-react-statics" "^3.3.0"
-    "@types/react" "*"
-    hoist-non-react-statics "^3.3.0"
-    redux "^4.0.0"
 
 "@types/react@*", "@types/react@^18.0.14":
   version "18.0.14"
@@ -5964,7 +5973,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.7, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.5.7, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.cnpm.cspiretech.com/prop-types/download/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha1-Z9h78aaU9IQ1zzMsJK8QIUoxQLU=
@@ -7755,6 +7764,11 @@ use-latest@^1.2.1:
   integrity sha1-0T37SwjCjj4zmRVGos7lPhQDjPI=
   dependencies:
     use-isomorphic-layout-effect "^1.1.1"
+
+use-sync-external-store@^1.0.0:
+  version "1.2.0"
+  resolved "https://registry.cnpm.cspiretech.com/use-sync-external-store/download/use-sync-external-store-1.2.0.tgz#7dbefd6ef3fe4e767a0cf5d7287aacfb5846928a"
+  integrity sha1-fb79bvP+TnZ6DPXXKHqs+1hGkoo=
 
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"

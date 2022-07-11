@@ -1,0 +1,55 @@
+.wrapper-login {
+  min-height: 100vh;
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+.login-body {
+  width: 100%;
+  padding: 32px;
+  background-color: #eef1f8;
+}
+.login-type {
+  display: flex;
+  margin: 32px 0;
+  text-align: center;
+  justify-content: space-between;
+  align-items: stretch;
+}
+.forgot-password {
+  text-align: right;
+  cursor: pointer;
+}
+.image-code {
+  width: 100px;
+  background-color: #fff;
+  height: 32px;
+}
+
+.third-party-login {
+}
+.wrapper-title {
+  position: relative;
+  margin: 16px auto;
+  text-align: center;
+  border-bottom: 1px solid #666;
+  width: 300px;
+}
+.wrapper-title span {
+  display: inline-block;
+  position: relative;
+  background-color: #eef1f8;
+  padding: 0 16px;
+  top: 12px;
+}
+.wrapper-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+.wrapper-list li {
+  margin: 8px;
+  cursor: pointer;
+}

@@ -1,6 +1,7 @@
 import loadable from '@loadable/component'
 import { FundOutlined } from '@ant-design/icons';
-const Guide = loadable(() => import('../pages/guide'))
+const Guide = loadable(() => import('../pages/guide'));
+
 const PageRoutes = [
   {
     icon: <FundOutlined />,
