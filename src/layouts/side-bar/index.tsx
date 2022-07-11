@@ -3,6 +3,8 @@ import closeIcon from './images/side-close.svg'
 import './index.styl'
 import { sideBarPrefix } from '@/env/config.styl';
 import { filterDot } from '@/utils/utils'
+import { CaretUpOutlined } from '@ant-design/icons';
+import lodash from 'lodash'
 
 interface menuProps {
   name: string,
@@ -18,33 +20,54 @@ interface DipSidebarInfo {
 }
 type DipSidebarProps = Partial<DipSidebarInfo>
 
+
 const DipRef = React.createRef();
 const SideBar = React.forwardRef((props: DipSidebarProps, ref) => {
   const prefix = filterDot(sideBarPrefix)
   const { menuList, curKey, menuClickCallback } = props
   const [menuKey, setMenuKey] = useState(null)
   const [isOpen, setIsOpen] = useState(true)
+  const [menu, setMenu] = useState(menuList)
+  const childRender = (item, index, level) => {
+    return <>
+      {
+        item.children && item.children.map((it, ind) => (
+          <React.Fragment key={ind}>
+            <div
+              className={`sidebar-ul-li ${it.isExpend ? '' : 'off'} cell ${(menuKey ? it.key == menuKey : curKey ? it.key == curKey : (index == 0 && ind == 0)) ? 'cur' : ''}`}
+              key={ind}
+              style={{ paddingLeft: 23 * (level + 1) }}
+              onClick={(e) => {
+                e.stopPropagation()
+                if (it.children) {
+                  it['isExpend'] = it['isExpend'] === undefined ? true : !it['isExpend']
+                  let _menu = lodash.cloneDeep(menu)
+                  setMenu(_menu)
+                } else {
+                  setMenuKey(it.key)
+                  menuClickCallback && menuClickCallback(it.key, it.path || '')
+                }
+              }}
+            >
+              <div className={`cell pl0`}><span>{it.name}</span>{it.children && <CaretUpOutlined className="tag" />}</div>
+              {it.children && <div className="sidebar-ul-li-ul" style={{ marginLeft: -23 * (level + 1) }}>{childRender(it, ind, level + 1)}</div>}
+            </div>
+
+          </React.Fragment>
+        ))
+      }
+    </>
+  }
   return <div className={`${prefix} ${isOpen ? '' : 'close'}`}>
     <div className={`sidebar-content-wrap ${isOpen ? '' : 'hidden'}`}>
       <div className="sidebar-content">
         {
-          menuList.map((item: menuProps, index) => (
+          menu.map((item: menuProps, index) => (
             <div key={index}>
               <div className="sidebar-ul cell">
                 <span className="icon">{item.icon}</span>{item.name}
               </div>
-              {
-                item.children && item.children.map((it, ind) => (
-                  <div
-                    className={`sidebar-ul-li cell ${(menuKey ? it.key == menuKey : curKey ? it.key == curKey : (index == 0 && ind == 0)) ? 'cur' : ''}`}
-                    key={ind}
-                    onClick={() => {
-                      setMenuKey(it.key)
-                      menuClickCallback && menuClickCallback(it.key, it.path)
-                    }}
-                  >{it.name}</div>
-                ))
-              }
+              {childRender(item, index, 1)}
             </div>
           ))
         }

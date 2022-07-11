@@ -11,15 +11,25 @@ const PageRoutes = [
       {
         name: '运营人员',
         key: 'operation-user-list',
-        path: '/operation-user-list',
+        // path: '/operation-user-list',
         component: <Guide />,
         isMenu: true,
         children: [
           {
-            name: '运营人员详情',
-            key: 'detail',
-            path: '/operation-user-list/detail',
+            name: '运营人员详情1',
+            key: 'detail1',
+            // path: '/detail',
             component: <Guide />,
+            isMenu: true,
+            children: [
+              {
+                name: '运营人员详情',
+                key: 'detail',
+                path: '/detail',
+                component: <Guide />,
+                isMenu: true,
+              }
+            ]
           }
         ]
       },

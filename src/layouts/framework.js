@@ -66,7 +66,7 @@ const Framework = (props) => {
             curKey={curKey}
             menuList={getMenuList(_.cloneDeep(PageRoutes))}
             menuClickCallback={(key, path) => {
-              navigate(path)
+              if (path) navigate(path)
             }}
           />
           <div className='framework-section-right'>

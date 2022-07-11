@@ -40,12 +40,31 @@
     cursor pointer;
   }
   .cell{
-    height: 40px;  
+    min-height: 40px;  
     display: flex;
     align-items: center;
     padding-left: 46px;
     box-sizing: border-box;
     position relative
+    &.pl0{
+      padding-left: 0;
+      display: flex;
+      justify-content: space-between;
+      width: 94%;
+    }
+  }
+  .tag{
+    font-size: 12px;
+    transition: transform ease 0.3s;
+    transform: rotate(0deg);
+  }  
+  .off{
+    > .sidebar-ul-li-ul{
+      max-height: 0;
+    }
+    .tag{
+      transform: rotate(180deg);
+    }
   }
   .sidebar-ul{
     font-family: PingFangSC-Medium;
@@ -63,12 +82,22 @@
       color: #1A2E42;
       line-height: 22px;  
       cursor: pointer;
+      display: flex;
+      flex-wrap: wrap;
+      overflow: hidden;
       &.cur{
         color: #1A47B0;
         background: #EBF0FF;
         border-right:6px solid #1A47B0; 
         transition: border-right ease 0.2s;
       }  
+      &-ul{
+        width: 260px;
+        transition: max-height 0.3s;
+        overflow hidden;
+        max-height: 100vh;
+        // margin-left: -44px;
+      }
     }
   }
 }
