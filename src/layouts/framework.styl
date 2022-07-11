@@ -241,10 +241,13 @@ table {
     display: flex;
     justify-content: space-between;
     &-right{
+      display: flex;
+      flex-direction: column;
       width: 100%;
       background: rgb(240, 242, 245);
     }
     &-content{
+      min-height: calc(100vh - 174px);
       padding: 16px;
     }
   }
