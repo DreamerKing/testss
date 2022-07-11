@@ -1,15 +1,34 @@
 import React from "react";
+import { useNavigate, useLocation } from 'react-router-dom'
 import PageRoutes from '@/routes/routes'
+import { filterDot, getRouteList } from '@/utils/utils'
+import { RightOutlined } from '@ant-design/icons';
 import './index.styl';
 import { crumbsPrefix } from '@/env/config.styl';
-import { filterDot, getRouteList } from '@/utils/utils'
 
 const Crumbs = () => {
+  const navigate = useNavigate()
+  const location = useLocation()
   const prefix = filterDot(crumbsPrefix)
   const routeList = getRouteList(PageRoutes)
-  let curRoute = routeList.filter(item => item.path === location.pathname)
+  const routes = []
+  const levels = location.pathname.slice(1, location.pathname.length).split('/')
+  levels.map((item, index) => {
+    routes.push({ path: `${index !== 0 ? routes[index - 1].path : ''}/${item}` })
+    const curRoute = routeList.filter(item => routes[index]['path'] === item.path)
+    routes[index]['name'] = curRoute[0]?.name || ''
+  })
   return <div className={prefix}>
-    <span className="md">{curRoute[0]?.name}</span>
+    {routes.map((item, ind) => (
+      <React.Fragment key={ind}>
+        <span className="md">{ind !== 0 && <RightOutlined />}</span>
+        <span className={`md ${ind !== routes.length - 1 ? 'pointer' : ''}`} onClick={() => {
+          if (ind !== routes.length - 1) {
+            navigate(item.path)
+          }
+        }}>{item.name}</span>
+      </React.Fragment>
+    ))}
   </div>
 }
 export default Crumbs
