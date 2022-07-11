@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import closeIcon from './images/side-close.svg'
-import openIcon from './images/side-open.svg'
 import './index.styl'
 import { sideBarPrefix } from '@/env/config.styl';
 import { filterDot } from '@/utils/utils'

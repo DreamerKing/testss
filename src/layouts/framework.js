@@ -45,7 +45,21 @@ const Framework = (props) => {
       renderEmpty={customizeRenderEmpty}
     >
       <div className="framework">
-        <Header title={headTitle} />
+        <Header
+          title={headTitle}
+          curKey={curKey}
+          menuList={[
+            {
+              name: '工作台',
+              key: 'a'
+            },
+            {
+              name: '数据管理',
+              key: 'a2'
+            }
+          ]}
+          extral={<div style={{ color: '#fff' }}>退出</div>}
+        />
         <div className='framework-section'>
           <SideBar
             curKey={curKey}
