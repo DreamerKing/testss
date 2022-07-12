@@ -1,47 +1,11 @@
 import { Space, Table, Form, Row, Col, Input, Button } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import AddUser from './add-user';
 import './user-manage.styl';
 
 const { Item: FItem } = Form;
-const columns = [
-  {
-    title: '用户ID',
-    dataIndex: 'name',
-    key: 'name',
-    render: (text) => <a>{text}</a>,
-  },
-  {
-    title: '账号',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: '姓名',
-    dataIndex: 'address',
-    key: 'address',
-  },
-  {
-    title: '手机号',
-    key: 'tags',
-    dataIndex: 'tags',
-  },
-  {
-    title: '更新时间',
-    key: 'updatedAt',
-    dataIndex: 'tags',
-  },
-  {
-    title: '操作',
-    key: 'action',
-    render: (_, record) => (
-      <Space size="middle">
-        <a>详情</a>
-        <a>编辑</a>
-      </Space>
-    ),
-  },
-];
+
 const initialData = [
   {
     key: '1',
@@ -78,6 +42,46 @@ const tailLayout = {
 const UserManage = () => {
   const [data, setData] = useState(initialData);
   const [visible, setVisible] = useState(false);
+  const navigate = useNavigate();
+
+  const columns = [
+    {
+      title: '用户ID',
+      dataIndex: 'name',
+      key: 'name',
+      render: (text) => <a>{text}</a>,
+    },
+    {
+      title: '账号',
+      dataIndex: 'age',
+      key: 'age',
+    },
+    {
+      title: '姓名',
+      dataIndex: 'address',
+      key: 'address',
+    },
+    {
+      title: '手机号',
+      key: 'tags',
+      dataIndex: 'tags',
+    },
+    {
+      title: '更新时间',
+      key: 'updatedAt',
+      dataIndex: 'tags',
+    },
+    {
+      title: '操作',
+      key: 'action',
+      render: (_, record) => (
+        <Space size="middle">
+          <a>详情</a>
+          <a onClick={() => navigate('./edit')}>编辑</a>
+        </Space>
+      ),
+    },
+  ];
 
   const handleAddUser = () => {
     setVisible(true);
