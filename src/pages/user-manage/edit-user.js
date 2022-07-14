@@ -1,4 +1,4 @@
-import { Form, Space, Input, Row, Col, Button, Tabs, List, Table } from 'antd';
+import { Form, Space, Input, Row, Col, Button, Tabs, List, Table, Tree } from 'antd';
 import { useState } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import './edit-user.styl';
@@ -12,6 +12,35 @@ const layout = {
   labelCol: { span: 6 },
   wrapperCol: { span: 12 }
 };
+
+const initTreeData = [
+  {
+    title: 'Expand to load',
+    key: '0',
+  },
+  {
+    title: 'Expand to load',
+    key: '1',
+  },
+  {
+    title: 'Tree Node',
+    key: '2',
+    isLeaf: true,
+  },
+];
+
+const updateTreeData = (list, key, children) =>
+  list.map((node) => {
+    if (node.key === key) {
+      return { ...node, children };
+    }
+
+    if (node.children) {
+      return { ...node, children: updateTreeData(node.children, key, children) };
+    }
+
+    return node;
+  });
 
 const UserInfo = () => {
   return (
@@ -58,6 +87,30 @@ const PermissionInfo = () => {
   };
 
   const [data, setData] = useState([]);
+  const [treeData, setTreeData] = useState(initTreeData);
+  const onLoadData = ({ key, children }) =>
+    new Promise((resolve) => {
+      if (children) {
+        resolve();
+        return;
+      }
+      setTimeout(() => {
+        setTreeData((origin) =>
+          updateTreeData(origin, key, [
+            {
+              title: 'Child Node',
+              key: `${key}-0`,
+            },
+            {
+              title: 'Child Node',
+              key: `${key}-1`,
+            },
+          ]),
+        );
+        resolve();
+      }, 1000);
+    });
+
   const columns = [
     {
       title: '角色名称',
@@ -77,40 +130,48 @@ const PermissionInfo = () => {
     }];
 
   return (
-    <div className="permission-info">
-      <Tabs defaultActiveKey='build-self-user' type="card" activeKey={activePermissionTab} onChange={handleChangePermissionTag}>
+    <>
+      <Tabs defaultActiveKey='build-self-user' className="user-permission-tab" type="card" activeKey={activePermissionTab} onChange={handleChangePermissionTag}>
         <TabPane tab={'自建用户体系'} key="build-self-user"></TabPane>
         <TabPane tab={'政府第三方应用体系'} key="police-third-user"></TabPane>
       </Tabs>
-      <div>
-        <div>角色授权</div>
-        <div>
-          <div>
-            <Space>
-              <Input prefix={<SearchOutlined />} placeholder="请输入" />
-            </Space>
-            <ul className="end-list">
-              {endList.map(l => {
-                return (
-                  <li key={l.key}>{l.name}</li>
-                )
-              })}
-            </ul>
+
+      <div className="permission-info">
+        <div className='permission-info-body'>
+          <div className='permission-info-title'>角色授权</div>
+          <div className='permission-info-role' >
+            <div className='permission-info-role-left'>
+              <Space>
+                <Input prefix={<SearchOutlined />} placeholder="请输入" />
+              </Space>
+              <ul className="end-list">
+                {endList.map(l => {
+                  return (
+                    <li key={l.key}>{l.name}</li>
+                  )
+                })}
+              </ul>
+            </div>
+            <div className='permission-info-role-right'>
+              <div className="permission-info-title-2">
+                <Space><div>角色列表</div></Space>
+              </div>
+              <div className="role-table-search">
+                <Space><Input placeholder="请输入角色名"></Input></Space>
+                <Space><Button type='primary'>查询</Button></Space>
+              </div>
+              <Table columns={columns} dataSource={data} />
+            </div>
           </div>
-          <div>
-            <div>
-              <Space><div>角色列表</div></Space>
-            </div>
-            <div>
-              <Space>角色列表</Space>
-              <Space><Input placeholder="请输入角色名"></Input></Space>
-              <Space><Button type='primary'>查询</Button></Space>
-            </div>
-            <Table columns={columns} dataSource={data} />
+        </div>
+        <div className='permission-info-body'>
+          <div className='permission-info-menu-title'>菜单授权</div>
+          <div className='permission-info-menu' >
+            <Tree checkable loadData={onLoadData} treeData={treeData} />
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

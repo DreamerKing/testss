@@ -4,6 +4,8 @@ const Guide = loadable(() => import('../pages/guide'));
 const UserManage = loadable(() => import('../pages/user-manage'));
 const EditUser = loadable(() => import('../pages/user-manage/edit-user'));
 const RoleManage = loadable(() => import('../pages/role-manage'));
+const AddRole = loadable(() => import('../pages/role-manage/add-role'));
+const ResouceRegister = loadable(() => import('../pages/resouce-register'));
 
 const PageRoutes = [
   {
@@ -32,6 +34,13 @@ const PageRoutes = [
         path: '/role-manage',
         component: <RoleManage />,
         isMenu: true,
+        children: [{
+          name: "添加角色",
+          key: 'role-manage/add',
+          path: '/role-manage/add',
+          component: <AddRole />,
+          isMenu: true,
+        }]
       },
       {
         name: "政策权限组",
@@ -85,6 +94,30 @@ const PageRoutes = [
     name: '菜单管理',
     key: 'menu',
     isMenu: true,
+    children: [
+
+    ]
+  },
+  {
+    icon: <FundOutlined />,
+    name: '应用资源',
+    key: 'resource',
+    isMenu: true,
+    children: [
+      {
+        name: '资源注册',
+        key: 'resource-register',
+        path: '/resource/register',
+        component: <ResouceRegister />,
+        isMenu: true,
+      }, {
+        name: '应用管理',
+        key: 'resource-application',
+        path: '/resource/application',
+        component: <ResouceRegister />,
+        isMenu: true,
+      }
+    ]
   },
   {
     icon: <FundOutlined />,

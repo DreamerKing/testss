@@ -3,6 +3,8 @@ import { useNavigate, useLocation, Outlet } from 'react-router-dom'
 import _ from 'lodash'
 // 国际化
 import { ConfigProvider } from 'antd';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleMainMenuVisible } from '@/slices/system';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
 import 'antd/dist/antd.less';
 import './framework.styl';
@@ -37,9 +39,12 @@ const getMenuList = (list = []) => {
 const Framework = (props) => {
   const navigate = useNavigate()
   const location = useLocation()
+  const mainMenuVisible = useSelector(state => state.system.mainMenuVisible);
   const routeList = getRouteList(PageRoutes)
   const curRoute = routeList.filter(item => item.path === location.pathname)
-  const [curKey, setCurKey] = useState(curRoute[0]?.key || '')
+  const [curKey, setCurKey] = useState(curRoute[0]?.key || '');
+  const dispatch = useDispatch();
+  const onToggleMainMenuVisible = () => dispatch(toggleMainMenuVisible());
   return (
     <ConfigProvider
       locale={zhCN}
@@ -64,13 +69,18 @@ const Framework = (props) => {
         <div className='framework-section'>
           <SideBar
             curKey={curKey}
+            mainMenuVisible={mainMenuVisible}
+            toggleMainMenu={onToggleMainMenuVisible}
             menuList={getMenuList(_.cloneDeep(PageRoutes))}
             menuClickCallback={(key, path) => {
               if (path) navigate(path)
             }}
           />
           <div className='framework-section-right'>
-            <Crumbs />
+            <Crumbs
+              mainMenuVisible={mainMenuVisible}
+              toggleMainMenu={onToggleMainMenuVisible}
+            />
             <div className='framework-section-content'>
               <Outlet />
             </div>

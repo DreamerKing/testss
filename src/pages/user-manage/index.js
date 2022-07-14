@@ -2,7 +2,7 @@ import { Space, Table, Form, Row, Col, Input, Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import AddUser from './add-user';
-import './user-manage.styl';
+import '../common/style/manage.styl';
 
 const { Item: FItem } = Form;
 

@@ -1,0 +1,72 @@
+.resource-register {
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 2px;
+  min-height: calc(100vh - 206px);
+
+  .application-switch {
+    padding: 16px;
+    border: 1px solid #dbdfe7;
+
+    label {
+      padding-right: 8px;
+    }
+  }
+  .resource-register-body {
+    border: 1px solid #dbdfe7;
+    display: flex;
+    margin-top: 16px;
+
+    .resource-register-left {
+      padding: 16px;
+      flex: 1;
+      border-right: 1px solid #dbdfe7;
+
+      .rescource-tree {
+        margin: 8px 0px;
+      }
+    }
+    .resource-register-right {
+      flex: 3;
+
+      .resource-register-title {
+        font-size: 18px;
+        margin: 16px;
+      }
+      .wrapper-table-top-options {
+        display: flex;
+        margin: 8px 0;
+        justify-content: flex-end;
+      }
+    }
+  }
+}
+.card-panel {
+  border: 1px solid #dbdfe7;
+  border-radius: 2px;
+  padding: 16px;
+  margin: 16px;
+
+  .card-panel-title {
+    font-size: 16px;
+  }
+}
+.card-panel-flex {
+  border: 1px solid #dbdfe7;
+  border-radius: 2px;
+  padding: 16px;
+  margin: 16px;
+  display: flex;
+  flex-wrap: wrap;
+
+  .card-panel-item-2 {
+    padding: 8px;
+    flex: 1 0 50%;
+
+    label::after {
+      content: ':';
+      padding-left: 2px;
+      padding-right: 4px;
+    }
+  }
+}

@@ -4,7 +4,7 @@ import ResetPwd from './reset-pwd';
 
 const { TabPane } = Tabs;
 const { Item: FItem } = Form;
-import "./login.css";
+import "./login.styl";
 
 const THIRD_LOGIN_TYPES = [{
   name: '政企服务登录',

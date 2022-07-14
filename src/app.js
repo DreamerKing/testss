@@ -11,6 +11,7 @@ import {
 } from 'react-router-dom';
 
 const Login = loadable(() => import('./pages/login'));
+const Test = loadable(() => import('./pages/test'));
 
 export default class App extends Component {
   render() {
@@ -19,6 +20,7 @@ export default class App extends Component {
         <Router>
           <Routes>
             <Route path='/login' element={<Login />} />
+            <Route path='/test' element={<Test />} />
             <Route element={<Framework />}>
               {getRouteList(PageRoutes).map((item, index) => (
                 <Route key={index} path={item.path} element={item.component} />

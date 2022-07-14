@@ -1,7 +1,7 @@
 import { Modal, Form, Input, Button } from "antd";
 const { Item: FItem } = Form;
 
-import "./reset-pwd.css";
+import "./reset-pwd.styl";
 
 const restPwd = (props) => {
   const onFinish = () => {
