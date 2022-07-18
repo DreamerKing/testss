@@ -7,6 +7,8 @@ const RoleManage = loadable(() => import('../pages/role-manage'));
 const AddRole = loadable(() => import('../pages/role-manage/add-role'));
 const ResouceRegister = loadable(() => import('../pages/resouce-register'));
 
+const DepartmentManage = loadable(() => import('../pages/dictionary-manage/department'));
+
 const PageRoutes = [
   {
     icon: <FundOutlined />,
@@ -142,7 +144,7 @@ const PageRoutes = [
         key: 'department',
         path: '/department',
         isMenu: true,
-        component: <Guide />
+        component: <DepartmentManage />
       }, {
         name: '银行管理',
         key: 'bank',

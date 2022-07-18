@@ -7,15 +7,26 @@
     background-color: #e8e8e8;
     margin-bottom: 16px;
     padding: 24px 24px 0px;
-  }
 
+    .form-search-area {
+      display: flex;
+      flex-wrap: wrap;
+
+      .ant-form-item {
+        flex: 0 0 25%;
+      }
+      .search-options {
+        margin-left: 24px;
+      }
+    }
+  }
   & .options-container {
     margin: 16px 0;
 
     .search-options {
       text-align: right;
+      margin-left: 16px;
     }
-
     .search-options button {
       margin-left: 8px;
     }
