@@ -1,4 +1,4 @@
-import { Button, Form, Input, Tabs, Row, Col } from 'antd';
+import { Button, Form, Input, Modal, Tabs, Row, Col } from 'antd';
 import { useState } from 'react';
 import ResetPwd from './reset-pwd';
 
@@ -17,12 +17,26 @@ const THIRD_LOGIN_TYPES = [{
   key: 3
 }]
 
+
+
 const Login = () => {
   const [type, setType] = useState('1');
   const [visible, setVisible] = useState(false);
   const onHandleTab = (tabkey) => {
     setType(tabkey);
   }
+  const handleForgotClick = () => {
+    Modal.warning({
+      title: '忘记密码',
+      okText: '知道了',
+      content: (
+        <>
+          <div>请联系管理员某某某完成密码重置</div>
+        </>
+      )
+    })
+  };
+
   const onFinish = (values) => {
     console.log(values, 'values');
   };
@@ -35,6 +49,7 @@ const Login = () => {
         <TabPane tab="手机号验证码" key="2"></TabPane>
       </Tabs>
       <Form name="login"
+        size="large"
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         autoComplete="false"
@@ -61,43 +76,38 @@ const Login = () => {
             >
               <Input />
             </FItem>
-            <FItem>
-              <Row gutter={8}>
-                <Col span={12}>
-                  <FItem
-                    name="graphicsVerificationCode"
-                    rules={[{ required: true, message: '请输入图形验证码' }]}
-                  >
-                    <Input placeholder='请输入图形验证码' />
-                  </FItem>
-                </Col>
-                <Col>
-                  <div className="image-code" onClick={() => setVisible(!visible)}>
-                    <img src="" />
-                  </div>
-                </Col>
-              </Row>
-            </FItem>
-            <FItem>
-              <Row gutter={8}>
-                <Col span={12}>
-                  <FItem
-                    name="mobileVerificationCode"
-                    rules={[{ required: true, message: '请输入手机验证码' }]}
-                  >
-                    <Input placeholder='请输入手机验证码' />
-                  </FItem>
-                </Col>
-                <Col>
-                  <Button>获取验证码</Button>
-                </Col>
-              </Row>
-            </FItem>
+            <Row gutter={8}>
+              <Col span={12}>
+                <FItem
+                  name="graphicsVerificationCode"
+                  rules={[{ required: true, message: '请输入图形验证码' }]}
+                >
+                  <Input placeholder='请输入图形验证码' />
+                </FItem>
+              </Col>
+              <Col>
+                <div className="image-code" onClick={() => setVisible(!visible)}>
+                  <img src="" />
+                </div>
+              </Col>
+            </Row>
+            <Row gutter={8}>
+              <Col span={12}>
+                <FItem
+                  name="mobileVerificationCode"
+                  rules={[{ required: true, message: '请输入手机验证码' }]}
+                >
+                  <Input placeholder='请输入手机验证码' />
+                </FItem>
+              </Col>
+              <Col>
+                <Button>获取验证码</Button>
+              </Col>
+            </Row>
           </>
         }
-        <FItem>
-          <div className="forgot-password">忘记密码?</div>
-        </FItem>
+        {type === '1' && <div className="forgot-password" onClick={handleForgotClick}>忘记密码?</div>
+        }
         <FItem>
           <Button type="primary" htmlType="submit" block={true}>
             登录

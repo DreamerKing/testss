@@ -10,7 +10,8 @@ const restPwd = (props) => {
   const onFinishFailed = () => { };
   return (
     <>
-      <Modal visible={props.visible} title="密码重置" closable={false} footer={null}>
+      <Modal className="rest-pwd" visible={props.visible} closable={false} footer={null}>
+        <div className="title">密码重置</div>
         <div className="rest-pwd-tips">为了您的账户安全首次登录请您重置密码</div>
         <Form
           name="restPwd"
@@ -36,7 +37,7 @@ const restPwd = (props) => {
             <Input.Password placeholder="请确认密码" />
           </FItem>
           <FItem wrapperCol={{ offset: 6, span: 12 }}>
-            <Button type="primary" htmlType="submit" block={true}>
+            <Button type="primary" htmlType="submit">
               确定
             </Button>
           </FItem>

@@ -1,1 +1,1 @@
-export const headTitle = "中枢系统运营平台"
+export const headTitle = "统一权限管理中心"
