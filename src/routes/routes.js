@@ -6,8 +6,9 @@ const EditUser = loadable(() => import('../pages/user-manage/edit-user'));
 const RoleManage = loadable(() => import('../pages/role-manage'));
 const AddRole = loadable(() => import('../pages/role-manage/add-role'));
 const ResouceRegister = loadable(() => import('../pages/resouce-register'));
-
 const DepartmentManage = loadable(() => import('../pages/dictionary-manage/department'));
+const BankManage = loadable(() => import('@/pages/dictionary-manage/bank'));
+const PolicyCategoryManage = loadable(() => import('@/pages/dictionary-manage/policy-category'));
 
 const PageRoutes = [
   {
@@ -138,7 +139,7 @@ const PageRoutes = [
         key: 'policy-category',
         path: '/policy-category',
         isMenu: true,
-        component: <Guide />
+        component: <PolicyCategoryManage />
       }, {
         name: '部门管理',
         key: 'department',
@@ -150,7 +151,7 @@ const PageRoutes = [
         key: 'bank',
         path: '/bank',
         isMenu: true,
-        component: <Guide />
+        component: <BankManage />
       }
     ]
   }
