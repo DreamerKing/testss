@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useLocation, Outlet } from 'react-router-dom'
 import _ from 'lodash'
 // 国际化
@@ -10,9 +10,9 @@ import 'antd/dist/antd.less';
 import './framework.styl';
 import noData from '@/assets/noData.svg'
 import Header from './header'
-import Footer from './footer'
-import SideBar from './side-bar';
-import Crumbs from './crumbs';
+import Footer from './footer';
+import SideMenu from './side-menu';
+import BreadNav from './bread-nav';
 import { headTitle } from '@/env/default';
 import PageRoutes from '@/routes/routes'
 import { getRouteList } from '@/utils/utils'
@@ -37,9 +37,7 @@ const getMenuList = (list = []) => {
 }
 
 const Framework = (props) => {
-  const navigate = useNavigate()
   const location = useLocation()
-  const mainMenuVisible = useSelector(state => state.system.mainMenuVisible);
   const routeList = getRouteList(PageRoutes)
   const curRoute = routeList.filter(item => item.path === location.pathname)
   const [curKey, setCurKey] = useState(curRoute[0]?.key || '');
@@ -67,20 +65,9 @@ const Framework = (props) => {
           extral={<div style={{ color: '#fff' }}>退出</div>}
         />
         <div className='framework-section'>
-          <SideBar
-            curKey={curKey}
-            mainMenuVisible={mainMenuVisible}
-            toggleMainMenu={onToggleMainMenuVisible}
-            menuList={getMenuList(_.cloneDeep(PageRoutes))}
-            menuClickCallback={(key, path) => {
-              if (path) navigate(path)
-            }}
-          />
+          <SideMenu />
           <div className='framework-section-right'>
-            <Crumbs
-              mainMenuVisible={mainMenuVisible}
-              toggleMainMenu={onToggleMainMenuVisible}
-            />
+            <BreadNav />
             <div className='framework-section-content'>
               <Outlet />
             </div>

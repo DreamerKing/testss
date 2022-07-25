@@ -9,9 +9,13 @@ export const systemSlice = createSlice({
     toggleMainMenuVisible: (state) => {
       state.mainMenuVisible = !state.mainMenuVisible;
     },
+    setMenuKey: (state, { payload: { key, keyPath = [] } }) => {
+      state.menuKey = key || 'user';
+      state.keyPath = [...keyPath]
+    }
   },
 });
 
 
-export const { toggleMainMenuVisible } = systemSlice.actions;
+export const { toggleMainMenuVisible, setMenuKey } = systemSlice.actions;
 export default systemSlice.reducer;

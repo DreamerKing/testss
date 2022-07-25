@@ -1,27 +1,33 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from '@reduxjs/toolkit/query';
-import createSagaMiddleware from "redux-saga";
+// import createSagaMiddleware from "redux-saga";
 import systemSlice from '@/slices/system';
-import counterReducer from "../slices/counter";
-import userReducer from '../slices/user'
-import mySaga from "../saga";
-import { pokemonApi } from "../services/pokemon";
+// import counterReducer from "@/slices/counter";
+import userReducer from '@/slices/user';
+import { apiSlice } from '@/slices/api/apiSlice';
 
-const sagaMiddleware = createSagaMiddleware();
+console.log(apiSlice, 'apiSlice');
+// import mySaga from "@/saga";
+// import { pokemonApi } from "@/services/pokemon";
+
+// const sagaMiddleware = createSagaMiddleware();
 
 const store = configureStore(
   {
     reducer: {
-      [pokemonApi.reducerPath]: pokemonApi.reducer,
-      counter: counterReducer,
+      [apiSlice.reducerPath]: apiSlice.reducer,
+      // [pokemonApi.reducerPath]: pokemonApi.reducer,
+      // counter: counterReducer,
       system: systemSlice,
       user: userReducer
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware, pokemonApi.middleware)
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware)
   }
 );
 
 setupListeners(store.dispatch);
-sagaMiddleware.run(mySaga);
+// sagaMiddleware.run(mySaga);
 
 export default store;
+
+
