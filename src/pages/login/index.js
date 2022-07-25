@@ -1,5 +1,6 @@
 import { Button, Form, Input, Modal, Tabs, Row, Col } from 'antd';
 import { useState } from 'react';
+import userSlice from '@/slices/api/user';
 import ResetPwd from './reset-pwd';
 
 const { TabPane } = Tabs;
@@ -25,6 +26,9 @@ const Login = () => {
   const onHandleTab = (tabkey) => {
     setType(tabkey);
   }
+
+  const [login] = userSlice.useLoginMutation();
+
   const handleForgotClick = () => {
     Modal.warning({
       title: '忘记密码',
@@ -38,6 +42,9 @@ const Login = () => {
   };
 
   const onFinish = (values) => {
+    login({
+      ...values,
+    });
     console.log(values, 'values');
   };
   const onFinishFailed = () => { };
@@ -57,14 +64,14 @@ const Login = () => {
         {
           type === '1' ? <>
             <FItem
-              name="username"
+              name="loginName"
               rules={[{ required: true, message: '请输入账户/手机号' }]}
             >
               <Input placeholder='请输入账户/手机号' />
             </FItem>
 
             <FItem
-              name="password"
+              name="passwd"
               rules={[{ required: true, message: '请输入登录密码' }]}
             >
               <Input.Password placeholder='请输入登录密码' />

@@ -21,8 +21,10 @@ module.exports = {
   // },
   devServer: {
     proxy: {
-      '/api': {
-        target: 'https://devops.cspiretech.com',
+      '/m1': {
+        target: 'http://127.0.0.1:4523',
+        // http://127.0.0.1:4523/m1/1239079-0-default/api/v2/operation/login
+        // target: 'https://devops.cspiretech.com',
         // pathRewrite: { '^/api/devops': '' },
         changeOrigin: true,
       }

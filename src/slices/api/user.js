@@ -1,20 +1,55 @@
-import fetch from "@/env/fetch"
+import { createSlice } from "@reduxjs/toolkit";
+import { apiSlice } from './apiSlice';
 
-const request = fetch.request
+export default apiSlice.injectEndpoints({
+  endpoints: (builder) => ({
+    login: builder.mutation({
+      query: ({
+        clientId,
+        loginName,
+        passwd,
+        verifyCode
+      }) => ({
+        url: '/api/v2/operation/login',
+        method: 'POST',
+        body: {
+          clientId,
+          loginName,
+          passwd,
+          verifyCode
+        }
+      }),
+    }),
 
-export function loginApi(data) {
-  return request({
-    url: `/devops/file/list`,
-    method: 'POST',
-    strictSSL: false,//访问https
-    data: data
+    refreshToken: builder.mutation({
+      query: ({ accessToken, refreshToken }) => ({
+        url: '/api/v1/refreshUserToken',
+        method: 'POST',
+        body: { accessToken, refreshToken }
+      })
+    }),
+    sendSMS: builder.mutation({
+      query: ({ mobilePhone, verifyCode }) => ({
+        url: '/api/v1/login/sendSMS',
+        method: 'POST',
+        body: { mobilePhone, verifyCode }
+      })
+    })
   })
-}
+});
 
-export function logoutApi(params) {
-  return request({
-    url: `/user/logout`,
-    method: 'GET',
-    params,
-  })
-}
+
+export const userSlice = createSlice({
+  name: "user",
+  initialState: {
+    currentUser: {},
+  },
+  reducers: {
+    login: (state, { payload }) => {
+      state.currentUser = payload;
+    },
+  },
+});
+
+
+export const { login } = userSlice.actions;
