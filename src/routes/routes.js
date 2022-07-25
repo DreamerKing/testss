@@ -52,6 +52,11 @@ export default [
 
         ]
       },
+      /*   {
+          name: '菜单管理',
+          path: 'menu/manage',
+          element: <MenuManage />,
+        }, */
       {
         name: '应用资源',
         path: 'resource',

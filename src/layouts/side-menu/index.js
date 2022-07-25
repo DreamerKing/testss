@@ -16,8 +16,8 @@ export default function SideMenu() {
     <Menu
       onClick={onClick}
       style={{ width: 256 }}
-      defaultSelectedKeys={['user']}
-      defaultOpenKeys={['user']}
+      defaultSelectedKeys={['permission']}
+      defaultOpenKeys={['permission', 'resource']}
       mode="inline"
       items={menus}
     />
