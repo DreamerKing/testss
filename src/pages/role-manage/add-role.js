@@ -1,54 +1,46 @@
-import { Form, Space, Input, Row, Col, Button, Tabs, Table, Tree, Radio } from 'antd';
-import { useState } from 'react';
+import { Form, Space, Input, Row, Col, Button, Select, Tabs, Table, Tree, Radio } from 'antd';
+import { useState, createRef, forwardRef } from 'react';
+import appApi from '@/slices/api/app';
+import permissonApi from '@/slices/api/permisssion';
+import { selectAppId } from '@/slices/api/role';
+import { useDispatch, useSelector } from 'react-redux';
 import './add-role.styl';
 
 
 const { Item: FItem } = Form;
 const { TabPane } = Tabs;
+const { Option: SOption } = Select;
 
 const layout = {
   labelCol: { span: 6 },
   wrapperCol: { span: 12 }
 };
 
-const initTreeData = [
-  {
-    title: 'Expand to load',
-    key: '0',
-  },
-  {
-    title: 'Expand to load',
-    key: '1',
-  },
-  {
-    title: 'Tree Node',
-    key: '2',
-    isLeaf: true,
-  },
-];
+const RoleInfoRef = createRef();
+const PermissionInfoRef = createRef();
 
-const updateTreeData = (list, key, children) =>
-  list.map((node) => {
-    if (node.key === key) {
-      return { ...node, children };
-    }
-
-    if (node.children) {
-      return { ...node, children: updateTreeData(node.children, key, children) };
-    }
-
-    return node;
-  });
-
-const RoleInfo = () => {
+const RoleInfo = forwardRef((props, ref) => {
+  const { data: { data: appList = [] } = {} } = appApi.useGetAllAppListQuery();
+  const [form] = Form.useForm();
+  const dispatch = useDispatch();
+  const handleSelectApp = (appId) => {
+    dispatch(selectAppId(appId));
+  }
   return (
     <div className="user-info">
       <div>角色信息</div>
-      <Form {...layout}>
+      <Form {...layout} ref={ref} form={form} >
         <Row gutter={8}>
           <Col span={12}>
             <FItem label="所属应用" name="name" >
-              <Input />
+              <Select onSelect={handleSelectApp}>
+                {appList.map((app) => {
+                  return (
+                    <SOption value={app.appId} key={app.appId}>{app.appName}</SOption>
+                  )
+                })
+                }
+              </Select>
             </FItem>
           </Col>
           <Col span={12}>
@@ -75,39 +67,22 @@ const RoleInfo = () => {
       </Form>
     </div>
   )
-}
+});
 
-const PermissionInfo = () => {
+const PermissionInfo = forwardRef((props, ref) => {
   const [activeTab, setActiveTab] = useState('button')
   const handleChangeTag = (key) => {
     setActiveTab(key)
   }
 
-  const [data, setData] = useState([]);
-  const [treeData, setTreeData] = useState(initTreeData);
-  const onLoadData = ({ key, children }) =>
-    new Promise((resolve) => {
-      if (children) {
-        resolve();
-        return;
-      }
-      setTimeout(() => {
-        setTreeData((origin) =>
-          updateTreeData(origin, key, [
-            {
-              title: 'Child Node',
-              key: `${key}-0`,
-            },
-            {
-              title: 'Child Node',
-              key: `${key}-1`,
-            },
-          ]),
-        );
-        resolve();
-      }, 1000);
-    });
+  const appId = useSelector(state => state.role.currentAppId);
 
+  const { data: { data: treeData = [] } = {} } = permissonApi.useGetAppMenuTreeQuery({ appId });
+  const onCheck = (selectedKeys, info) => {
+    console.log(selectedKeys, info, 'selectedKeys');
+  }
+
+  const [data, setData] = useState([]);
   const columns = [
     {
       title: '角色名称',
@@ -132,7 +107,16 @@ const PermissionInfo = () => {
         <div className='permission-info-title'>授权</div>
         <div className='permission-info-role' >
           <div className='permission-info-role-left'>
-            <Tree checkable loadData={onLoadData} treeData={treeData} />
+            <Tree ref={ref} checkable
+              fieldNames={
+                {
+                  key: 'id',
+                  title: 'showName',
+                  children: 'childPermissons'
+                }
+              }
+              onCheck={onCheck}
+              treeData={treeData} />
           </div>
           <div className='permission-info-role-right'>
             <div className="permission-info-title-2">
@@ -147,14 +131,22 @@ const PermissionInfo = () => {
       </div>
     </div>
   )
-}
+})
 
 export default function AddRole() {
+
+  const handleSave = async () => {
+    const values = await RoleInfoRef.current.validateFields();
+    const checkedKeys = PermissionInfoRef.current.state.checkedKeys
+    console.log(checkedKeys, 'AddRole', values)
+  }
+
   return (
     <div className="edit-user">
       <div className="title">新增角色</div>
-      <RoleInfo />
-      <PermissionInfo />
+      <RoleInfo ref={RoleInfoRef} />
+      <PermissionInfo ref={PermissionInfoRef} />
+      <div className="btn-group"><Button>取消</Button> <Button type="primary" className='save-btn' onClick={handleSave}>保存</Button></div>
     </div>
   )
 }

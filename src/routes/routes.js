@@ -13,12 +13,13 @@ export default [
     element: <Login />
   },
   {
-    path: '/',
+    path: '/*',
     element: <Framework />,
     children: [
       {
         name: '用户权限',
         path: 'permission',
+        redirect: '/permission/user',
         children: [
           {
             name: "用户管理",
@@ -33,12 +34,18 @@ export default [
           {
             name: "角色管理",
             path: 'role',
+            strict: true,
             element: <RoleManage />,
-            children: [{
-              name: "添加角色",
-              path: 'add',
-              element: <AddRole />,
-            }]
+            /*  children: [{
+               name: "添加角色",
+               path: ':option',
+               element: <AddRole />,
+             }] */
+          },
+          {
+            name: "添加或编辑角色",
+            path: 'role/:option',
+            element: <AddRole />,
           },
           {
             name: "政策权限组",
